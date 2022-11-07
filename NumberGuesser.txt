@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.Random;
+public class NumberGuesser {
+	
+	public static void main(String[] args)
+	{
+		Scanner scn = new Scanner(System.in);
+		Random rn = new Random();
+		int tries = 10;
+		System.out.println("Welcome to the number guessing game!");
+		System.out.println("You have "+tries+" to guess the number(present between 1-50)");
+		boolean check = true;
+		int num = rn.nextInt(50);
+		while(tries>0) 
+		{
+			int guess = scn.nextInt();
+			if(guess>num) {
+				System.out.println("The number you guessed is too high, try lower.");
+				System.out.println((tries-1)+" tries left");
+				
+			}
+			else if(guess<num) {
+				System.out.println("The number you guessed is too low, try higher.");
+				System.out.println((tries-1)+" tries left");
+			}
+			else if(guess == num) {
+				System.out.println("CONGRATULATIONS! You guessed it right");
+				check = false;
+				break;
+			}
+			tries--;
+		}
+		if(check == true) {
+			System.out.println("OPPS! You don't have any tries left");
+		}
+		
+	}
+}
